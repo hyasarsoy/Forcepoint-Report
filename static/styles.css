@@ -1,25 +1,43 @@
-/* General page styling */
+/* General page styling with company colors */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: #0a0a29;  /* Dark blue background color */
+    color: #FFFFFF;  /* White text color for contrast */
     margin: 0;
     padding: 0;
 }
 
+/* Header styling with logo */
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #0a0a29;
+}
+
+.logo {
+    width: 150px;
+}
+
+/* Main content container */
 .container {
     max-width: 800px;
-    margin: 50px auto;
+    margin: 20px auto;
     padding: 20px;
-    background: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #0a0a29;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
+    color: #00ff6a;  /* Green color from logo */
 }
 
+/* Titles and headings with green color */
 h2, h3 {
-    color: #0056b3;
+    color: #00ff6a;
+    font-weight: bold;
 }
 
+/* Form styling */
 form {
     display: flex;
     flex-direction: column;
@@ -32,17 +50,20 @@ form div {
 input[type="text"], input[type="date"], textarea, select {
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #ddd;
+    border: 1px solid #00ff6a;  /* Green border color */
     border-radius: 4px;
     width: 100%;
     box-sizing: border-box;
+    background-color: #1a1a3c;  /* Darker background for inputs */
+    color: #FFFFFF;
 }
 
+/* Button styling with green color */
 button {
     padding: 10px 15px;
     font-size: 16px;
-    color: #fff;
-    background-color: #0056b3;
+    color: #0a0a29;  /* Dark blue text color */
+    background-color: #00ff6a;  /* Green background color */
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -52,9 +73,15 @@ button {
 }
 
 button:hover {
-    background-color: #004494;
+    background-color: #00cc55;  /* Slightly darker green for hover */
 }
 
+/* Checkbox styling */
+input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+/* Sub-module styling */
 .module-group {
     margin: 10px 0;
 }
@@ -63,15 +90,6 @@ button:hover {
     margin-left: 20px;
     display: flex;
     flex-direction: column;
-}
-
-input[type="checkbox"] {
-    margin-right: 8px;
-}
-
-.sub-module {
-    margin-left: 20px;
-    display: flex;
-    flex-direction: column;
     transition: all 0.3s ease-in-out;
+    color: #00ff6a;
 }
