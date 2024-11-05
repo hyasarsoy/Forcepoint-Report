@@ -1,0 +1,14 @@
+body {
+    font-family: Arial, sans-serif;
+}
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}
+h2 {
+    color: #333;
+}
+form div {
+    margin-bottom: 15px;
+}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Summary</h2>
+<ul>
+    {% for key, value in data.items() %}
+    <li>{{ key }}: {{ value }}</li>
+    {% endfor %}
+</ul>
+<form method="POST">
+    <button type="submit">Export to Excel and PDF</button>
+</form>
+{% endblock %}

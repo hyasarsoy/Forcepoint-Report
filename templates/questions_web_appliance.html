@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Web Appliance Questions</h2>
+<form method="POST">
+    <div>
+        <label for="web_appliance_q1">Is Web Appliance configured for SSL decryption?</label>
+        <input type="text" name="web_appliance_q1" required>
+    </div>
+    <div>
+        <label for="web_appliance_q2">Any recent incidents related to web access control?</label>
+        <input type="text" name="web_appliance_q2">
+    </div>
+    <button type="submit">Next</button>
+</form>
+{% endblock %}

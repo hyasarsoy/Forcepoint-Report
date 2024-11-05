@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Web Hybrid Questions</h2>
+<form method="POST">
+    <div>
+        <label for="web_hybrid_q1">Is Hybrid mode configured with cloud support?</label>
+        <input type="text" name="web_hybrid_q1" required>
+    </div>
+    <div>
+        <label for="web_hybrid_q2">Any policy violations detected in hybrid mode?</label>
+        <input type="text" name="web_hybrid_q2">
+    </div>
+    <button type="submit">Next</button>
+</form>
+{% endblock %}

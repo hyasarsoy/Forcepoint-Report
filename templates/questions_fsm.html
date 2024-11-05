@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Forcepoint Security Manager Questions</h2>
+<form method="POST">
+    <div>
+        <label for="fsm_q1">What is the current version of FSM deployed?</label>
+        <input type="text" name="fsm_q1" required>
+    </div>
+    <div>
+        <label for="fsm_q2">Are there any known issues with FSM?</label>
+        <input type="text" name="fsm_q2">
+    </div>
+    <button type="submit">Next</button>
+</form>
+{% endblock %}

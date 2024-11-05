@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>DLP ICAP Questions</h2>
+<form method="POST">
+    <div>
+        <label for="dlp_icap_q1">Is ICAP integration active for web filtering?</label>
+        <input type="text" name="dlp_icap_q1" required>
+    </div>
+    <div>
+        <label for="dlp_icap_q2">Has ICAP detected any malicious files?</label>
+        <input type="text" name="dlp_icap_q2">
+    </div>
+    <button type="submit">Next</button>
+</form>
+{% endblock %}

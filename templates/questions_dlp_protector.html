@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>DLP Protector Questions</h2>
+<form method="POST">
+    <div>
+        <label for="dlp_protector_q1">Is DLP Protector properly configured for email scanning?</label>
+        <input type="text" name="dlp_protector_q1" required>
+    </div>
+    <div>
+        <label for="dlp_protector_q2">Any recent incidents reported by DLP Protector?</label>
+        <input type="text" name="dlp_protector_q2">
+    </div>
+    <button type="submit">Next</button>
+</form>
+{% endblock %}

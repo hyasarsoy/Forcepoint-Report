@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>DLP ESG Questions</h2>
+<form method="POST">
+    <div>
+        <label for="dlp_esg_q1">Is ESG actively scanning inbound emails?</label>
+        <input type="text" name="dlp_esg_q1" required>
+    </div>
+    <div>
+        <label for="dlp_esg_q2">Has ESG flagged any high-risk attachments recently?</label>
+        <input type="text" name="dlp_esg_q2">
+    </div>
+    <button type="submit">Next</button>
+</form>
+{% endblock %}
