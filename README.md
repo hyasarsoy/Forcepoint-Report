@@ -1,7 +1,3 @@
-Here’s a `README.md` file to guide users on setting up and using the application.
-
----
-
 # Forcepoint Report Generator
 
 This is a web-based application for generating Forcepoint reports based on customer-specific details and modules. The app enables L1 support staff to input customer information, select relevant Forcepoint modules, answer dynamic questions, and generate reports in Excel and PDF formats.
@@ -89,10 +85,3 @@ This project is licensed under the MIT License.
 
 Feel free to fork this repository and submit pull requests if you have any improvements or bug fixes.
 
-## Contact
-
-For any questions or feedback, please contact [Your Name](mailto:your-email@example.com).
-
----
-
-Enjoy generating your Forcepoint reports! 😊
