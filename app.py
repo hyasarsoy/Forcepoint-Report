@@ -12,15 +12,6 @@ app.secret_key = 'your_secret_key'  # Replace with a secure key
 class InfoForm(FlaskForm):
     customer_name = StringField('Customer Name', validators=[DataRequired()])
     date = DateField('Date', validators=[DataRequired()])
-    modules = SelectMultipleField('Modules', choices=[
-        ('fsm', 'Forcepoint Security Manager'),
-        ('dlp_protector', 'DLP Protector'),
-        ('dlp_irr', 'DLP IRR'),
-        ('dlp_icap', 'DLP ICAP'),
-        ('dlp_esg', 'DLP ESG'),
-        ('web_appliance', 'Web Appliance'),
-        ('web_hybrid', 'Web Hybrid')
-    ], validators=[DataRequired()])
     submit = SubmitField('Next')
 
 # Route to the home page
@@ -30,19 +21,32 @@ def index():
     if form.validate_on_submit():
         session['customer_name'] = form.customer_name.data
         session['date'] = form.date.data.strftime('%Y-%m-%d')
-        session['modules'] = form.modules.data
+        session['modules'] = request.form.getlist('modules')  # Store list of selected modules
+        session['current_module_index'] = 0  # Initialize index for question navigation
         return redirect(url_for('module_questions'))
     return render_template('index.html', form=form)
 
-# Route to dynamically load question pages based on selected modules
+# Route to display questions for each module
 @app.route('/module_questions', methods=['GET', 'POST'])
 def module_questions():
     modules = session.get('modules', [])
-    if request.method == 'POST':
-        for module in modules:
-            session[module] = request.form.getlist(module)
+    current_index = session.get('current_module_index', 0)
+    
+    # If we've gone through all modules, go to the summary
+    if current_index >= len(modules):
         return redirect(url_for('summary'))
-    return render_template('modules.html', modules=modules)
+    
+    current_module = modules[current_index]
+    
+    if request.method == 'POST':
+        # Save answers for the current module
+        session[current_module] = request.form.getlist(current_module)
+        # Move to the next module
+        session['current_module_index'] += 1
+        return redirect(url_for('module_questions'))
+    
+    # Render the questions page for the current module
+    return render_template(f'questions_{current_module}.html')
 
 # Summary and export route
 @app.route('/summary', methods=['GET', 'POST'])

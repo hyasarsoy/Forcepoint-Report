@@ -1,9 +1,58 @@
-h2, h3 {
+/* General page styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
     color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h2, h3 {
+    color: #0056b3;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
 }
 
 form div {
     margin-bottom: 15px;
+}
+
+input[type="text"], input[type="date"], textarea, select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #0056b3;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100px;
+    align-self: flex-end;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #004494;
 }
 
 .module-group {
