@@ -14,14 +14,14 @@
     <h3>Select Installed Components:</h3>
     <div class="module-group">
         <label>
-            <input type="checkbox" name="modules" value="fsm"> Forcepoint Security Manager
+            <input type="checkbox" name="modules" value="fsm" onclick="toggleSubModules('fsm')"> Forcepoint Security Manager
         </label>
     </div>
     <div class="module-group">
         <label>
-            <input type="checkbox" name="modules" value="dlp"> Forcepoint DLP
+            <input type="checkbox" name="modules" value="dlp" onclick="toggleSubModules('dlp')"> Forcepoint DLP
         </label>
-        <div class="sub-module">
+        <div id="dlp-sub-modules" class="sub-module" style="display: none;">
             <label><input type="checkbox" name="modules" value="dlp_irr"> IRR</label><br>
             <label><input type="checkbox" name="modules" value="dlp_ocr"> OCR</label><br>
             <label><input type="checkbox" name="modules" value="dlp_esg"> ESG</label>
@@ -29,9 +29,9 @@
     </div>
     <div class="module-group">
         <label>
-            <input type="checkbox" name="modules" value="web"> Forcepoint Web Security
+            <input type="checkbox" name="modules" value="web" onclick="toggleSubModules('web')"> Forcepoint Web Security
         </label>
-        <div class="sub-module">
+        <div id="web-sub-modules" class="sub-module" style="display: none;">
             <label><input type="checkbox" name="modules" value="web_appliance"> Web Appliance</label><br>
             <label><input type="checkbox" name="modules" value="web_hybrid"> Web Hybrid</label>
         </div>
@@ -44,4 +44,15 @@
     
     <button type="submit">Next</button>
 </form>
+
+<!-- JavaScript for toggling sub-module display -->
+<script>
+    function toggleSubModules(module) {
+        const subModuleDiv = document.getElementById(module + '-sub-modules');
+        const mainModuleCheckbox = document.querySelector(`input[name="modules"][value="${module}"]`);
+        if (subModuleDiv) {
+            subModuleDiv.style.display = mainModuleCheckbox.checked ? 'block' : 'none';
+        }
+    }
+</script>
 {% endblock %}

@@ -68,3 +68,10 @@ button:hover {
 input[type="checkbox"] {
     margin-right: 8px;
 }
+
+.sub-module {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease-in-out;
+}
