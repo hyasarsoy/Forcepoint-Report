@@ -1,14 +1,21 @@
-body {
-    font-family: Arial, sans-serif;
-}
-.container {
-    max-width: 600px;
-    margin: auto;
-    padding: 20px;
-}
-h2 {
+h2, h3 {
     color: #333;
 }
+
 form div {
     margin-bottom: 15px;
+}
+
+.module-group {
+    margin: 10px 0;
+}
+
+.sub-module {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="checkbox"] {
+    margin-right: 8px;
 }

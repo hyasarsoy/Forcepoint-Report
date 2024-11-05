@@ -3,9 +3,45 @@
 <h2>Customer Information</h2>
 <form method="POST">
     {{ form.hidden_tag() }}
-    {{ form.customer_name.label }} {{ form.customer_name() }}
-    {{ form.date.label }} {{ form.date() }}
-    {{ form.modules.label }} {{ form.modules() }}
-    {{ form.submit() }}
+
+    <div>
+        {{ form.customer_name.label }} {{ form.customer_name() }}
+    </div>
+    <div>
+        {{ form.date.label }} {{ form.date() }}
+    </div>
+    
+    <h3>Select Installed Components:</h3>
+    <div class="module-group">
+        <label>
+            <input type="checkbox" name="modules" value="fsm"> Forcepoint Security Manager
+        </label>
+    </div>
+    <div class="module-group">
+        <label>
+            <input type="checkbox" name="modules" value="dlp"> Forcepoint DLP
+        </label>
+        <div class="sub-module">
+            <label><input type="checkbox" name="modules" value="dlp_irr"> IRR</label><br>
+            <label><input type="checkbox" name="modules" value="dlp_ocr"> OCR</label><br>
+            <label><input type="checkbox" name="modules" value="dlp_esg"> ESG</label>
+        </div>
+    </div>
+    <div class="module-group">
+        <label>
+            <input type="checkbox" name="modules" value="web"> Forcepoint Web Security
+        </label>
+        <div class="sub-module">
+            <label><input type="checkbox" name="modules" value="web_appliance"> Web Appliance</label><br>
+            <label><input type="checkbox" name="modules" value="web_hybrid"> Web Hybrid</label>
+        </div>
+    </div>
+    <div class="module-group">
+        <label>
+            <input type="checkbox" name="modules" value="esg"> Forcepoint ESG
+        </label>
+    </div>
+    
+    <button type="submit">Next</button>
 </form>
 {% endblock %}
