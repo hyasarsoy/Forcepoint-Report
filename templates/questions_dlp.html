@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Forcepoint DLP Questions</h2>
+<form method="POST">
+    <div>
+        <label for="dlp_q1">Is DLP properly configured for data monitoring?</label>
+        <input type="text" name="dlp_q1" required>
+    </div>
+    <div>
+        <label for="dlp_q2">Any recent incidents reported by DLP?</label>
+        <input type="text" name="dlp_q2">
+    </div>
+    <button type="submit">Next</button>
+</form>
+{% endblock %}
