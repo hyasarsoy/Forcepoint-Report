@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>DLP Policy Configuration Questions</h2>
+<form method="POST">
+    <div>
+        <label for="manager_role">Manager Role Configuration</label>
+        <input type="text" name="manager_role" placeholder="FSM sunucusu konfigürasyonu nedir?" required>
+    </div>
+    <div>
+        <label for="incident_count">Daily Incident Count</label>
+        <input type="text" name="incident_count" placeholder="Günlük incident sayısı nedir?" required>
+    </div>
+    <div>
+        <label for="rbac">Role-Based Access Control</label>
+        <input type="text" name="rbac" placeholder="Farklı roller tanımlandı mı?" required>
+    </div>
+    <div>
+        <label for="ad_integration">Active Directory Integration</label>
+        <input type="text" name="ad_integration" placeholder="AD entegrasyonu başarılı mı?" required>
+    </div>
+    <div>
+        <label for="linking_service">Linking Service Integration</label>
+        <input type="text" name="linking_service" placeholder="Linking Service entegrasyonu var mı?" required>
+    </div>
+    <div>
+        <label for="audit_logs">Audit Logs</label>
+        <input type="text" name="audit_logs" placeholder="Loglar dışa aktarılıyor mu?" required>
+    </div>
+    <div>
+        <label for="incident_archival">Incident Archival</label>
+        <input type="text" name="incident_archival" placeholder="Arşivler remote bir path'te mi tutuluyor?" required>
+    </div>
+    <button type="submit">Next</button>
+</form>
+{% endblock %}

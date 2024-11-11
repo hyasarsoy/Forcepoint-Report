@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>OCR Questions</h2>
+<form method="POST">
+    <div>
+        <label for="ocr_mode">Operation Mode</label>
+        <input type="text" name="ocr_mode" placeholder="OCR çalışma modu nedir?" required>
+    </div>
+    <div>
+        <label for="language">Language Selection</label>
+        <input type="text" name="language" placeholder="OCR için hangi diller seçilmiş?" required>
+    </div>
+    <div>
+        <label for="cpu">CPU and Core Count</label>
+        <input type="text" name="cpu" placeholder="Sunucu işlemci ve çekirdek Sayısı?" required>
+    </div>
+    <div>
+        <label for="ram">RAM Size</label>
+        <input type="text" name="ram" placeholder="FSM Sunucu RAM Boyutu" required>
+    </div>
+    <div>
+        <label for="antivirus">Antivirus DEP/UAC Control</label>
+        <input type="text" name="antivirus" placeholder="Antivirüs DEP/UAC Kontrolü" required>
+    </div>
+    <!-- Add other OCR questions here as needed -->
+    <button type="submit">Next</button>
+</form>
+{% endblock %}

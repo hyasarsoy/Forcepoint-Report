@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Web DLP Questions</h2>
+<form method="POST">
+    <div>
+        <label for="operation_mode">Operation Mode</label>
+        <input type="text" name="operation_mode" placeholder="Protector/ WCG hangi modda çalışmaktadır?" required>
+    </div>
+    <div>
+        <label for="ssl_inspection">SSL Inspection</label>
+        <input type="text" name="ssl_inspection" placeholder="SSL Inspection yapılmakta mı?" required>
+    </div>
+    <div>
+        <label for="cgw_mode">CGW/Protector Mode</label>
+        <input type="text" name="cgw_mode" placeholder="Monitoring modda mi yoksa block modda mi çalışıyor?" required>
+    </div>
+    <button type="submit">Next</button>
+</form>
+{% endblock %}

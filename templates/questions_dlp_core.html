@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Core DLP Questions</h2>
+<form method="POST">
+    <div>
+        <label for="dlp_version">DLP Version and Hotfix Details</label>
+        <input type="text" name="dlp_version" placeholder="DLP versiyonu nedir?" required>
+    </div>
+    <div>
+        <label for="system_health">System Health</label>
+        <input type="text" name="system_health" placeholder="Sisteme ait sağlık bilgileri görüntülendi mi?" required>
+    </div>
+    <div>
+        <label for="health_monitoring">Health Monitoring & Alerting</label>
+        <input type="text" name="health_monitoring" placeholder="Aktif Alarm veya Log var mı?" required>
+    </div>
+    <div>
+        <label for="backup_configured">Backup & Restoration</label>
+        <input type="text" name="backup_configured" placeholder="Forcepoint DLP arayüzünde back up konfiüre edildi mi?" required>
+    </div>
+    <div>
+        <label for="backup_count">Number of Backups Configured</label>
+        <input type="text" name="backup_count" placeholder="Kaç adet back up konfigüre edildi?" required>
+    </div>
+    <div>
+        <label for="backup_location">Backup Location</label>
+        <input type="text" name="backup_location" placeholder="Back-Up kopyaları local bir path üzerinde mi tutuluyor?" required>
+    </div>
+    <div>
+        <label for="load_balancing">Load Balancing and High Availability</label>
+        <input type="text" name="load_balancing" placeholder="Load Balancing uygulanıyor mu?" required>
+    </div>
+    <div>
+        <label for="queue">PolicyEngine Queues</label>
+        <input type="text" name="queue" placeholder="Queue’da bekleyen process var mı?" required>
+    </div>
+    <button type="submit">Next</button>
+</form>
+{% endblock %}
