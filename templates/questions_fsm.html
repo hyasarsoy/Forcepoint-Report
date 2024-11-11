@@ -1,15 +1,55 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Forcepoint Security Manager Questions</h2>
+<h2>Forcepoint Security Manager Soruları</h2>
 <form method="POST">
     <div>
-        <label for="fsm_q1">What is the current version of FSM deployed?</label>
-        <input type="text" name="fsm_q1" required>
+        <label for="fsm_cpu_cores">FSM Sunucu işlemci ve çekirdek Sayısı</label>
+        <input type="text" name="fsm_cpu_cores" required>
     </div>
     <div>
-        <label for="fsm_q2">Are there any known issues with FSM?</label>
-        <input type="text" name="fsm_q2">
+        <label for="fsm_ram_size">FSM Sunucu RAM Boyutu</label>
+        <input type="text" name="fsm_ram_size" required>
     </div>
-    <button type="submit">Next</button>
+    <div>
+        <label for="fsm_disk_size">FSM Sunucu Disk Boyutu</label>
+        <input type="text" name="fsm_disk_size" required>
+    </div>
+    <div>
+        <label for="service_info">Servis Bilgisi</label>
+        <textarea name="service_info" placeholder="Forcepoint Web Security ürünün efektif bir şekilde işlemesi ve kullanılabilmesi adına, tüm servislerinin çalışıyor olması gerekmektedir." required></textarea>
+    </div>
+    <div>
+        <label for="dep_uac_check">Antivirüs DEP/UAC Kontrolü</label>
+        <textarea name="dep_uac_check" placeholder="Antivirüs tanımlamaları, Data Execution Prevention (DEP) ve User Access Control (UAC) kapalı olmalıdır." required></textarea>
+    </div>
+    <div>
+        <label for="eicar_test_result">eicar test sonucu</label>
+        <input type="text" name="eicar_test_result" required>
+    </div>
+    <div>
+        <label for="system_time_check">Sistem saati kontrolü</label>
+        <input type="text" name="system_time_check" required>
+    </div>
+    <div>
+        <label for="windows_update">Windows update</label>
+        <input type="text" name="windows_update" required>
+    </div>
+    <div>
+        <label for="event_viewer_check">Event Viewer kontrolü</label>
+        <textarea name="event_viewer_check" placeholder="Sistem ve Uygulama logları Forcepoint sunucusuna dair sorunları gidermek, olası uyarıları izlemek ve performans analizi sağlamak adına kontrol edilmelidir." required></textarea>
+    </div>
+    <div>
+        <label for="service_user_info">Service User bilgisi</label>
+        <textarea name="service_user_info" placeholder="Otomatik sistem görevleri ve hizmetlerin kesintisiz çalışması için gereklidir." required></textarea>
+    </div>
+    <div>
+        <label for="backup_check">FSM Sunucusuna Dair Back-Up Düzenli Alınıyor mu?</label>
+        <textarea name="backup_check" placeholder="Veri kaybı durumunda sistemin hızla eski haline dönebilmesini sağlar. Bu, veri güvenliğini sağlamak ve iş sürekliliğini korumak için kritik öneme sahiptir." required></textarea>
+    </div>
+    <div>
+        <label for="monitoring">FSM monitor ediliyor mu?</label>
+        <textarea name="monitoring" placeholder="Cihazlar hakkında bilgi toplanmasına yarayan bir protokoldür ve aktif olarak kullanılması önerilir." required></textarea>
+    </div>
+    <button type="submit">Sonraki</button>
 </form>
 {% endblock %}
