@@ -1,13 +1,18 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, send_file
 from flask_wtf import FlaskForm
-from wtforms import StringField, DateField, SelectMultipleField, SubmitField
+from wtforms import StringField, DateField, SubmitField
 from wtforms.validators import DataRequired
 import pandas as pd
-from fpdf import FPDF
+from reportbro import Report
+import json
 import os
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Replace with a secure key
+
+# Load the ReportBro template from a JSON file
+with open('report_template.json') as f:
+    report_template = json.load(f)
 
 class InfoForm(FlaskForm):
     customer_name = StringField('Customer Name', validators=[DataRequired()])
@@ -70,13 +75,39 @@ def export_to_excel(data):
         os.makedirs('reports')
     df.to_excel('reports/report.xlsx', index=False)
 
+# Use ReportBro to generate a PDF with a more sophisticated template
 def export_to_pdf(data):
-    pdf = FPDF()
-    pdf.add_page()
-    pdf.set_font("Arial", size=12)
-    for key, value in data.items():
-        pdf.cell(200, 10, txt=f"{key}: {value}", ln=True)
-    pdf.output("reports/report.pdf")
+    report_data = {
+        "customer_name": data['Customer Name'],
+        "report_date": data['Date'],
+        "modules": []
+    }
+
+    # Add each module's questions and answers
+    for module in session.get('modules', []):
+        report_data["modules"].append({
+            "module_name": module,
+            "answers": data.get(module, [])
+        })
+
+    # Create the Report object with ReportBro
+    report = Report(report_template, report_data, 'pdf')
+
+    # Generate and save the PDF file
+    if not os.path.exists('reports'):
+        os.makedirs('reports')
+    pdf_file_path = 'reports/generated_report.pdf'
+    with open(pdf_file_path, 'wb') as f:
+        f.write(report.generate_pdf())
+
+# Optional route to download the generated PDF
+@app.route('/download_report')
+def download_report():
+    pdf_file_path = 'reports/generated_report.pdf'
+    if os.path.exists(pdf_file_path):
+        return send_file(pdf_file_path, as_attachment=True)
+    else:
+        return "Report not found. Please generate the report first.", 404
 
 if __name__ == '__main__':
     app.run(debug=True)

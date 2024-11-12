@@ -3,3 +3,4 @@ Flask-WTF
 pandas
 openpyxl
 fpdf
+reportbro-lib
