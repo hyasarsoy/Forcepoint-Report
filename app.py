@@ -10,6 +10,7 @@ import os
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Replace with a secure key
 
+# Function to export data to Excel
 def export_to_excel(data):
     # Convert data dictionary to DataFrame
     df = pd.DataFrame([data])
@@ -21,9 +22,18 @@ def export_to_excel(data):
     # Save data to an Excel file in the 'reports' directory
     df.to_excel('reports/report.xlsx', index=False)
 
-# Load the ReportBro template from a JSON file
-with open('report_template.json') as f:
-    report_template = json.load(f)
+# Load the ReportBro template from a JSON file with validation
+template_path = 'report_template.json'
+if os.path.exists(template_path):
+    with open(template_path) as f:
+        report_template = json.load(f)
+else:
+    report_template = None
+    print("Warning: 'report_template.json' not found. Please check the file path.")
+
+# Validate the structure of the report template
+if report_template is None or 'pageFormat' not in report_template or 'documentProperties' not in report_template:
+    raise ValueError("The report_template.json is invalid or missing required properties like 'pageFormat' or 'documentProperties'.")
 
 class InfoForm(FlaskForm):
     customer_name = StringField('Customer Name', validators=[DataRequired()])
@@ -64,7 +74,6 @@ def module_questions():
     # Render the questions page for the current module
     return render_template(f'questions_{current_module}.html')
 
-
 # Summary and export route
 @app.route('/summary', methods=['GET', 'POST'])
 def summary():
@@ -89,8 +98,6 @@ def summary():
     
     return render_template('summary.html', data=data)
 
-
-
 # Use ReportBro to generate a PDF with a more sophisticated template
 def export_to_pdf(data):
     report_data = {
@@ -106,12 +113,12 @@ def export_to_pdf(data):
             "answers": data.get(module, [])
         })
 
-    # Create the Report object with ReportBro
-    report = Report(report_template, report_data, 'pdf')
-
-    # Generate and save the PDF file
+    # Ensure 'reports' directory exists
     if not os.path.exists('reports'):
         os.makedirs('reports')
+
+    # Create the Report object with ReportBro and generate PDF
+    report = Report(report_template, report_data, 'pdf')
     pdf_file_path = 'reports/generated_report.pdf'
     with open(pdf_file_path, 'wb') as f:
         f.write(report.generate_pdf())
