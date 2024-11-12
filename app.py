@@ -10,6 +10,17 @@ import os
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Replace with a secure key
 
+def export_to_excel(data):
+    # Convert data dictionary to DataFrame
+    df = pd.DataFrame([data])
+    
+    # Ensure 'reports' directory exists
+    if not os.path.exists('reports'):
+        os.makedirs('reports')
+    
+    # Save data to an Excel file in the 'reports' directory
+    df.to_excel('reports/report.xlsx', index=False)
+
 # Load the ReportBro template from a JSON file
 with open('report_template.json') as f:
     report_template = json.load(f)
