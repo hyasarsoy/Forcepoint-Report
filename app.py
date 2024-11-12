@@ -118,10 +118,13 @@ def export_to_pdf(data):
         os.makedirs('reports')
 
     # Create the Report object with ReportBro and generate PDF
-    report = Report(report_template, report_data, 'pdf')
-    pdf_file_path = 'reports/generated_report.pdf'
-    with open(pdf_file_path, 'wb') as f:
-        f.write(report.generate_pdf())
+    try:
+        report = Report(report_template, report_data, 'pdf')
+        pdf_file_path = 'reports/generated_report.pdf'
+        with open(pdf_file_path, 'wb') as f:
+            f.write(report.generate_pdf())
+    except Exception as e:
+        print(f"Error generating PDF: {e}")
 
 # Optional route to download the generated PDF
 @app.route('/download_report')
