@@ -53,15 +53,24 @@ def module_questions():
     # Render the questions page for the current module
     return render_template(f'questions_{current_module}.html')
 
+
 # Summary and export route
 @app.route('/summary', methods=['GET', 'POST'])
 def summary():
     data = {
         'Customer Name': session.get('customer_name'),
         'Date': session.get('date'),
+        'Modules': []
     }
-    data.update({module: session.get(module) for module in session.get('modules', [])})
     
+    # Add each module's questions and answers
+    for module in session.get('modules', []):
+        module_data = {
+            "module_name": module,
+            "answers": session.get(module, [])
+        }
+        data['Modules'].append(module_data)
+
     if request.method == 'POST':
         export_to_excel(data)
         export_to_pdf(data)
@@ -69,11 +78,7 @@ def summary():
     
     return render_template('summary.html', data=data)
 
-def export_to_excel(data):
-    df = pd.DataFrame([data])
-    if not os.path.exists('reports'):
-        os.makedirs('reports')
-    df.to_excel('reports/report.xlsx', index=False)
+
 
 # Use ReportBro to generate a PDF with a more sophisticated template
 def export_to_pdf(data):

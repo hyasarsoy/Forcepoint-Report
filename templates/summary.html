@@ -1,12 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Summary</h2>
-<ul>
-    {% for key, value in data.items() %}
-    <li>{{ key }}: {{ value }}</li>
+    <h1>Report Summary</h1>
+    
+    <p><strong>Customer Name:</strong> {{ data['Customer Name'] }}</p>
+    <p><strong>Date:</strong> {{ data['Date'] }}</p>
+    
+    <h2>Modules and Answers</h2>
+    
+    {% for module in data['Modules'] %}
+        <h3>{{ module.module_name }}</h3>
+        <ul>
+            {% for answer in module.answers %}
+                <li>{{ answer }}</li>
+            {% endfor %}
+        </ul>
     {% endfor %}
-</ul>
-<form method="POST">
-    <button type="submit">Export to Excel and PDF</button>
-</form>
+
+    <!-- Form to trigger report generation -->
+    <form action="{{ url_for('summary') }}" method="post">
+        <button type="submit">Generate Reports</button>
+    </form>
 {% endblock %}
