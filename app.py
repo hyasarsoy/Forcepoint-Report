@@ -12,8 +12,18 @@ app.secret_key = 'your_secret_key'  # Replace with a secure key
 
 # Function to export data to Excel
 def export_to_excel(data):
-    # Convert data dictionary to DataFrame
-    df = pd.DataFrame([data])
+    # Flatten the data for better readability in Excel
+    flattened_data = []
+    for module in data['Modules']:
+        flattened_data.append({
+            'Customer Name': data['Customer Name'],
+            'Date': data['Date'],
+            'Module Name': module['module_name'],
+            'Answers': ', '.join(module['answers']) if module['answers'] else "No answers provided"
+        })
+    
+    # Convert the flattened data to a DataFrame
+    df = pd.DataFrame(flattened_data)
     
     # Ensure 'reports' directory exists
     if not os.path.exists('reports'):
