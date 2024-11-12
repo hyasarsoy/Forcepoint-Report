@@ -1,0 +1,60 @@
+{
+    "docElements": [
+      {
+        "type": "text",
+        "text": "Customer Report",
+        "position": {"x": 0.5, "y": 0.5, "w": 7.5, "h": 0.5},
+        "style": {"fontSize": 18, "bold": true, "align": "center"}
+      },
+      {
+        "type": "text",
+        "text": "Customer Name: {{customer_name}}",
+        "position": {"x": 0.5, "y": 1.5, "w": 7.5, "h": 0.3},
+        "style": {"fontSize": 12}
+      },
+      {
+        "type": "text",
+        "text": "Report Date: {{report_date}}",
+        "position": {"x": 0.5, "y": 1.8, "w": 7.5, "h": 0.3},
+        "style": {"fontSize": 12}
+      },
+      {
+        "type": "line",
+        "position": {"x": 0.5, "y": 2.2, "w": 7.5, "h": 0},
+        "style": {"lineWidth": 1}
+      },
+      {
+        "type": "text",
+        "text": "Modules and Findings",
+        "position": {"x": 0.5, "y": 2.5, "w": 7.5, "h": 0.3},
+        "style": {"fontSize": 14, "bold": true}
+      },
+      {
+        "type": "table",
+        "data": "modules",
+        "columns": [
+          {"name": "module_name", "label": "Module Name", "width": 3},
+          {"name": "answers", "label": "Answers", "width": 4.5}
+        ],
+        "position": {"x": 0.5, "y": 3, "w": 7.5, "h": 5},
+        "style": {"fontSize": 10},
+        "rowStyle": {"minHeight": 0.4}
+      }
+    ],
+    "parameters": [
+      {"name": "customer_name", "type": "string"},
+      {"name": "report_date", "type": "string"},
+      {
+        "name": "modules",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "module_name": {"type": "string"},
+            "answers": {"type": "array", "items": {"type": "string"}}
+          }
+        }
+      }
+    ]
+  }
+  
