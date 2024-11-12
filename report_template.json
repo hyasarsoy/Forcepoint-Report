@@ -55,6 +55,13 @@
           }
         }
       }
-    ]
+    ],
+    "pageFormat": "A4",
+    "documentProperties": {
+      "title": "Customer Report",
+      "author": "Report Generator",
+      "subject": "Report for Customer Data",
+      "keywords": "Report, Customer"
+    }
   }
   
