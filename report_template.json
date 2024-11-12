@@ -2,7 +2,7 @@
     "docElements": [
       {
         "type": "text",
-        "text": "Customer Report",
+        "text": "Forcepoint Web Security Health Check Report",
         "position": {"x": 0.5, "y": 0.5, "w": 7.5, "h": 0.5},
         "style": {"fontSize": 18, "bold": true, "align": "center"}
       },
@@ -25,43 +25,79 @@
       },
       {
         "type": "text",
-        "text": "Modules and Findings",
+        "text": "Gizlilik Bildirimi",
         "position": {"x": 0.5, "y": 2.5, "w": 7.5, "h": 0.3},
         "style": {"fontSize": 14, "bold": true}
       },
       {
+        "type": "text",
+        "text": "İş bu belge Netsmart Bilişim Sistemleri A.Ş. ve MNB Bilişim Hizmetleri arasında yapılan gizlilik anlaşmalarına bağlı kalmaksızın...",
+        "position": {"x": 0.5, "y": 2.8, "w": 7.5, "h": 1},
+        "style": {"fontSize": 10}
+      },
+      {
+        "type": "text",
+        "text": "Giriş",
+        "position": {"x": 0.5, "y": 4, "w": 7.5, "h": 0.3},
+        "style": {"fontSize": 14, "bold": true}
+      },
+      {
+        "type": "text",
+        "text": "Forcepoint Web Security sistem değerlendirmesi ve teknik sağlık kontrolü için hazırlanmıştır...",
+        "position": {"x": 0.5, "y": 4.3, "w": 7.5, "h": 1},
+        "style": {"fontSize": 10}
+      },
+      {
+        "type": "text",
+        "text": "Teknik Sağlık Kontrolü",
+        "position": {"x": 0.5, "y": 5.5, "w": 7.5, "h": 0.3},
+        "style": {"fontSize": 14, "bold": true}
+      },
+      {
         "type": "table",
-        "data": "modules",
+        "data": "health_check_results",
         "columns": [
-          {"name": "module_name", "label": "Module Name", "width": 3},
-          {"name": "answers", "label": "Answers", "width": 4.5}
+          {"name": "parameter", "label": "Parametre", "width": 3},
+          {"name": "observation", "label": "Gözlem", "width": 4.5}
         ],
-        "position": {"x": 0.5, "y": 3, "w": 7.5, "h": 5},
+        "position": {"x": 0.5, "y": 5.8, "w": 7.5, "h": 3},
         "style": {"fontSize": 10},
         "rowStyle": {"minHeight": 0.4}
+      },
+      {
+        "type": "text",
+        "text": "Bulgular ve Öneriler",
+        "position": {"x": 0.5, "y": 9.5, "w": 7.5, "h": 0.3},
+        "style": {"fontSize": 14, "bold": true}
+      },
+      {
+        "type": "text",
+        "text": "Yapılan Health Check kontrolünde genel sistem özeti, bulgu ve öneriler aşağıdaki gibidir...",
+        "position": {"x": 0.5, "y": 9.8, "w": 7.5, "h": 1},
+        "style": {"fontSize": 10}
       }
     ],
     "parameters": [
       {"name": "customer_name", "type": "string"},
       {"name": "report_date", "type": "string"},
       {
-        "name": "modules",
+        "name": "health_check_results",
         "type": "array",
         "items": {
           "type": "object",
           "properties": {
-            "module_name": {"type": "string"},
-            "answers": {"type": "array", "items": {"type": "string"}}
+            "parameter": {"type": "string"},
+            "observation": {"type": "string"}
           }
         }
       }
     ],
     "pageFormat": "A4",
     "documentProperties": {
-      "title": "Customer Report",
-      "author": "Report Generator",
-      "subject": "Report for Customer Data",
-      "keywords": "Report, Customer"
+      "title": "Forcepoint Web Security Health Check Report",
+      "author": "Netsmart",
+      "subject": "Web Security Health Check",
+      "keywords": "Health Check, Web Security, Forcepoint"
     }
   }
   

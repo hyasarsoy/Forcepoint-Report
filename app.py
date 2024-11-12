@@ -103,15 +103,15 @@ def export_to_pdf(data):
     report_data = {
         "customer_name": data['Customer Name'],
         "report_date": data['Date'],
-        "modules": []
+        "health_check_results": [
+            {"parameter": "Version and Hotfix Details", "observation": "No issues found with version 8.5.5.44."},
+            {"parameter": "System Health Interface", "observation": "No error messages detected."},
+            {"parameter": "Resource Utilization", "observation": "Resource utilization is stable."},
+            {"parameter": "AV Exclusions, DEP, UAC", "observation": "Data Execution Prevention is disabled."},
+            {"parameter": "Backup & Restoration", "observation": "No scheduled backups found for Forcepoint Web system."},
+            # Add more parameters as needed based on your findings
+        ]
     }
-
-    # Add each module's questions and answers
-    for module in session.get('modules', []):
-        report_data["modules"].append({
-            "module_name": module,
-            "answers": data.get(module, [])
-        })
 
     # Ensure 'reports' directory exists
     if not os.path.exists('reports'):
@@ -125,6 +125,7 @@ def export_to_pdf(data):
             f.write(report.generate_pdf())
     except Exception as e:
         print(f"Error generating PDF: {e}")
+
 
 # Optional route to download the generated PDF
 @app.route('/download_report')
